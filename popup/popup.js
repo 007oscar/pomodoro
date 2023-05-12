@@ -76,6 +76,15 @@ chrome.storage.sync.get(["tasks"], (res) => {
   tasks = res.tasks ?? [];
   renderTasks();
 });
+chrome.storage.local.get(["isRunning"], (res) => {
+  const isRunning = res.isRunning;
+  const status = startTimerBtn.textContent;
+  if (isRunning) {
+    startTimerBtn.textContent = "Stop Time";
+  } else {
+    startTimerBtn.textContent = "Start Time";
+  }
+});
 
 resetTimerBtn.addEventListener("click", () => {
   let timer = 0;
@@ -83,7 +92,6 @@ resetTimerBtn.addEventListener("click", () => {
   chrome.storage.local.set({ timer, isRunning });
   const status = startTimerBtn.textContent;
   startTimerBtn.textContent = "Start Time";
-  isRunning = false;
 });
 
 startTimerBtn.addEventListener("click", () => {
