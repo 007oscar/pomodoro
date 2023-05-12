@@ -57,9 +57,11 @@ function deleteTask(item) {
 
 function updateTimer() {
   const timerLabel = document.getElementById("timer");
-  chrome.storage.local.get(["timer"], (res) => {
+  chrome.storage.local.get(["timer", "timeOptions"], (res) => {
     let timer = res.timer;
-    let minutes = `${25 - Math.ceil(timer / 60)}`.padStart(2, "0");
+    const timeOptions = res.timeOptions
+
+    let minutes = `${timeOptions - Math.ceil(timer / 60)}`.padStart(2, "0");
     let seconds = "00";
     if (timer % 60 != 0) {
       seconds = `${60 - (timer % 60)}`.padStart(2, "0");
@@ -78,7 +80,7 @@ chrome.storage.sync.get(["tasks"], (res) => {
 });
 chrome.storage.local.get(["isRunning"], (res) => {
   const isRunning = res.isRunning;
-  const status = startTimerBtn.textContent;
+  
   if (isRunning) {
     startTimerBtn.textContent = "Stop Time";
   } else {
