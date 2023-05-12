@@ -1,11 +1,43 @@
-body{
+body {
   height: 400px;
   width: 400px;
+  background: #b90202;
+}
+#timer {
+  text-align: center;
+  font-size: 40px;
+  margin: 10px;
+
+  color: whitesmoke;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: center;
   height: 40px;
+  background: whitesmoke;
+  margin: -8px;
+  padding: 5px;
+}
 
+#btn-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+#btn-container > button {
+  color: #b90202;
+  background-color: whitesmoke;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-weight: bold;
+  width: 120px;
+  cursor: pointer;
+}
+
+#btn-container > button :hover {
+   color: aqua;
+   background-color: black;
 }
