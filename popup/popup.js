@@ -15,6 +15,7 @@ function renderTask(item) {
   text.type = "text";
   text.placeholder = "Enter a task...";
   text.value = tasks[item];
+  text.className = "task-input"
   text.addEventListener("change", () => {
     tasks[item] = text.value;
     chrome.storage.sync.set({ tasks });
@@ -22,6 +23,7 @@ function renderTask(item) {
   });
   const deleteBtn = document.createElement("input");
   deleteBtn.type = "button";
+  deleteBtn.className = "delete-btn"
   deleteBtn.value = "X";
 
   taskRow.appendChild(text);

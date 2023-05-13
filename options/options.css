@@ -1,0 +1,32 @@
+body{
+    background-color: #b90202;
+}
+h1{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 50px;
+    margin: 10px;
+    font-weight: normal;
+}
+
+h2{
+    font-weight: normal;
+    color: whitesmoke;
+}
+
+#time-options{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    width: 200px;
+}
+
+#save-btn{
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #b90202;
+    font-weight: 700;
+}
