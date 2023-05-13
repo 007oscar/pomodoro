@@ -57,16 +57,24 @@ function deleteTask(item) {
 
 function updateTimer() {
   const timerLabel = document.getElementById("timer");
-  chrome.storage.local.get(["timer", "timeOptions"], (res) => {
+  chrome.storage.local.get(["timer", "timeOptions", "isRunning"], (res) => {
     let timer = res.timer;
     const timeOptions = res.timeOptions ?? 25
-
+    const isRunning = res.isRunning ?? false
+    timerLabel.textContent = ""
     let minutes = `${timeOptions - Math.ceil(timer / 60)}`.padStart(2, "0");
     let seconds = "00";
     if (timer % 60 != 0) {
       seconds = `${60 - (timer % 60)}`.padStart(2, "0");
     }
     timerLabel.textContent = `${minutes}:${seconds}`;
+
+    if (isRunning) {
+      startTimerBtn.textContent = "Stop Time";
+    } else {
+      startTimerBtn.textContent = "Start Time";
+    }
+
   });
 }
 
@@ -92,7 +100,6 @@ resetTimerBtn.addEventListener("click", () => {
   let timer = 0;
   isRunning = false;
   chrome.storage.local.set({ timer, isRunning });
-  const status = startTimerBtn.textContent;
   startTimerBtn.textContent = "Start Time";
 });
 
