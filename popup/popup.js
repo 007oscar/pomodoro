@@ -5,30 +5,11 @@ const startTimerBtn = document.getElementById("start-timer-btn");
 addTaskBtn.addEventListener("click", () => addTask());
 let tasks = [];
 
-<<<<<<< HEAD
-// save the task list
-const tasks =  []
-
-function addTask() {
-  const item = tasks.length
-  tasks.push("")
-
-  const taskRow = document.createElement("div")
-
-  const text = document.createElement("input")
-  text.type= "text";
-  text.placeholder="Enter a task...";
-  text.addEventListener("change" , ()=> {
-    tasks[item] = text.value
-    console.log(tasks)
-  })
-=======
 function renderTask(item) {
   // const item = tasks.length;
   // tasks.push("");
 
   const taskRow = document.createElement("div");
->>>>>>> 012854a263ca4e89c55190a2f560a6eebc0d76a3
 
   const text = document.createElement("input");
   text.type = "text";
@@ -42,17 +23,9 @@ function renderTask(item) {
   const deleteBtn = document.createElement("input");
   deleteBtn.type = "button";
   deleteBtn.value = "X";
-<<<<<<< HEAD
-  deleteBtn.addEventListener('click' , ()=>{
-     tasks.splice(item,1)
-  })
-  taskRow.appendChild(text)
-  taskRow.appendChild(deleteBtn)
-=======
 
   taskRow.appendChild(text);
   taskRow.appendChild(deleteBtn);
->>>>>>> 012854a263ca4e89c55190a2f560a6eebc0d76a3
 
   deleteBtn.addEventListener("click", () => {
     // tasks.splice(item, 1);
@@ -86,7 +59,7 @@ function updateTimer() {
   const timerLabel = document.getElementById("timer");
   chrome.storage.local.get(["timer", "timeOptions"], (res) => {
     let timer = res.timer;
-    const timeOptions = res.timeOptions
+    const timeOptions = res.timeOptions ?? 25
 
     let minutes = `${timeOptions - Math.ceil(timer / 60)}`.padStart(2, "0");
     let seconds = "00";
